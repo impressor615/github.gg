@@ -8,8 +8,8 @@ from src.datastructures.user_count import UserCount
 
 
 class CrawlFetcher():
-    def fetch(self) -> UserCount:
-        count_map = self._fetch("qodot")
+    def fetch(self, username: str) -> UserCount:
+        count_map = self._fetch(username)
 
         return UserCount(count_map)
 
@@ -31,8 +31,3 @@ class CrawlFetcher():
                 count_map[date] = count
 
         return count_map
-
-
-if __name__ == "__main__":
-    fetcher = CrawlFetcher()
-    user_count = fetcher.fetch()
