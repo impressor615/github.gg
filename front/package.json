@@ -1,0 +1,26 @@
+{
+  "name": "@github.gg/front",
+  "version": "0.0.1",
+  "description": "front-end for github.gg",
+  "main": "index.js",
+  "repository": "git@github.com:qodot/github.gg.git",
+  "author": "yuyuny <yuyunykk@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "dependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.5.2"
+  }
+}

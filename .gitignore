@@ -2,6 +2,9 @@
 __pycache__
 .mypy_cache
 
+# front dist
+dist
+
 # Logs
 logs
 *.log
