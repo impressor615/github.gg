@@ -1,0 +1,12 @@
+{
+  "eslint.options": {
+    "configFile": "./.eslint/.eslintrc.dev.js"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
