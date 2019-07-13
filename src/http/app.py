@@ -5,7 +5,7 @@ from flask import (
 )
 from werkzeug.exceptions import BadRequest
 
-from src.fetcher.crawl import CrawlFetcher
+from src.fetcher.services import CrawlFetchService
 from src.tier.tier_calculator import TierCalculator
 
 
@@ -24,7 +24,8 @@ def home():
     if not username:
         raise BadRequest
 
-    user_count = CrawlFetcher().fetch(username)
+    fetch_service = CrawlFetchService()
+    user_count = fetch_service.fetch(username)
     tier = TierCalculator().calculate(user_count)
 
     return jsonify({
