@@ -1,5 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -14,13 +17,23 @@ module.exports = {
         options: {
           configFile: path.resolve(
             __dirname,
-            `../.eslint/.eslintrc${
-              process.env.NODE_ENV === 'production' ? '' : '.dev'
-            }.js`
+            `../.eslint/.eslintrc${isDev ? '.dev' : ''}.js`
           ),
         },
       },
       { test: /\.tsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+            },
+          },
+          'css-loader',
+        ],
+      },
     ],
   },
   resolve: {
@@ -35,6 +48,12 @@ module.exports = {
       title: 'commit.gg',
       description: 'What is your tier on github?',
       theme: '#c921f3',
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: isDev ? '[name].css' : '[name].[hash].optimize.css',
+      chunkFilename: isDev ? '[id].css' : '[id].[hash].optimize.css',
     }),
   ],
 };
