@@ -3,8 +3,8 @@ import { hot } from 'react-hot-loader';
 
 function App() {
   const test = {
-    b: 'wow',
     a: 'wow2',
+    b: 'wow',
     c: 'ho',
   };
   return <h1>hello world!</h1>;
