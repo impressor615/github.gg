@@ -1,12 +1,7 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 
-function App() {
-  const test = {
-    a: 'wow2',
-    b: 'wow',
-    c: 'ho',
-  };
+const App: React.FC = () => {
   return <h1>hello world!</h1>;
-}
-export default hot(module)(App);
+};
+export default hot(App);
