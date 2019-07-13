@@ -4,7 +4,7 @@ from src.fetcher.models import UserCount
 from src.tier.models import Tier
 
 
-class TierCalculator():
+class TierCalculateService():
     CRITERIA = collections.OrderedDict({
         Tier.BRONZE: {
             "average": 0,
