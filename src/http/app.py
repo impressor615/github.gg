@@ -28,10 +28,10 @@ def home():
     user_count = fetch_service.fetch(username)
 
     calculate_service = TierCalculateService()
-    tier = calculate_service.calculate(user_count)
+    tier_name = calculate_service.calculate(user_count)
 
     return jsonify({
         "average": user_count.average,
         "no_commit_day": user_count.no_commit_day,
-        "tier": tier.value,
+        "tier": tier_name,
     })

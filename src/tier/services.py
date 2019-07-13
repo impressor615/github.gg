@@ -1,45 +1,15 @@
-import collections
-
+from .models import TIERS
+from .models import Bronze
 from src.fetcher.models import UserCount
-from src.tier.models import Tier
 
 
 class TierCalculateService():
-    CRITERIA = collections.OrderedDict({
-        Tier.BRONZE: {
-            "average": 0,
-            "no_commit_day": 999,
-        },
-        Tier.SILVER: {
-            "average": 0.5,
-            "no_commit_day": 999,
-        },
-        Tier.GOLD: {
-            "average": 1,
-            "no_commit_day": 999,
-        },
-        Tier.PLATINUM: {
-            "average": 3,
-            "no_commit_day": 168,
-        },
-        Tier.DIAMOND: {
-            "average": 4,
-            "no_commit_day": 100,
-        },
-        Tier.MASTER: {
-            "average": 5,
-            "no_commit_day": 50,
-        },
-        Tier.CHALLENGER: {
-            "average": 7,
-            "no_commit_day": 0,
-        },
-    })
+    def calculate(self, user_count: UserCount) -> str:
+        last_tier = Bronze
+        for tier in TIERS:
+            if not tier.satisfy(user_count.average, user_count.no_commit_day):
+                break
 
-    def calculate(self, user_count: UserCount) -> Tier:
-        for tier, criteria in self.CRITERIA.items():
-            if (
-                user_count.average <= criteria["average"]
-                or user_count.no_commit_day > criteria["no_commit_day"]
-            ):
-                return tier
+            last_tier = tier
+
+        return last_tier.name()
