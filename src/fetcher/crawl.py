@@ -4,7 +4,7 @@ import typing
 import bs4
 import requests
 
-from src.datastructures.user_count import UserCount
+from .models import UserCount
 
 
 class CrawlFetcher():

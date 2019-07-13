@@ -1,6 +1,6 @@
 import collections
 
-from src.datastructures.user_count import UserCount
+from src.fetcher.models import UserCount
 from src.tier.models import Tier
 
 
