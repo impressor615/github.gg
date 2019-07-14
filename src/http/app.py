@@ -5,8 +5,8 @@ from flask import (
 )
 from werkzeug.exceptions import BadRequest
 
-from src.fetcher.crawl import CrawlFetcher
-from src.tier.tier_calculator import TierCalculator
+from src.fetcher.services import CrawlFetchService
+from src.tier.services import TierCalculateService
 
 
 def create_app():
@@ -24,11 +24,14 @@ def home():
     if not username:
         raise BadRequest
 
-    user_count = CrawlFetcher().fetch(username)
-    tier = TierCalculator().calculate(user_count)
+    fetch_service = CrawlFetchService()
+    user_count = fetch_service.fetch(username)
+
+    calculate_service = TierCalculateService()
+    tier_name = calculate_service.calculate(user_count)
 
     return jsonify({
         "average": user_count.average,
         "no_commit_day": user_count.no_commit_day,
-        "tier": tier.value,
+        "tier": tier_name,
     })

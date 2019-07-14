@@ -4,10 +4,10 @@ import typing
 import bs4
 import requests
 
-from src.datastructures.user_count import UserCount
+from .models import UserCount
 
 
-class CrawlFetcher():
+class CrawlFetchService():
     def fetch(self, username: str) -> UserCount:
         count_map = self._fetch(username)
 
