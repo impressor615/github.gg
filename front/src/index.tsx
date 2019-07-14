@@ -1,3 +1,5 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import 'react-hot-loader';
 import 'normalize.css';
 import React from 'react';
