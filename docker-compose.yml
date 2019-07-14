@@ -1,0 +1,23 @@
+version: '3'
+
+volumes:
+  github-gg-python-site-packages: {}
+  github-gg-python-bin: {}
+
+services:
+  flask:
+    container_name: github-gg-flask
+    build:
+      context: .
+    command: >
+      sh -c ". /app/venv/bin/activate
+      && pip install -r requirements.txt
+      && python manage.py run"
+    ports:
+      - 5050:5000
+    volumes:
+      - ./:/app
+      - github-gg-python-site-packages:/app/venv/site-packages
+      - github-gg-python-bin:/app/venv/bin
+    environment:
+      - FLASK_APP=src/http/app.py
