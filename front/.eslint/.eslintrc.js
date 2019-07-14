@@ -32,6 +32,14 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      'babel-module': {
+        alias: {
+          styles: '../src/styles',
+        },
+        extensions: ['.ts', '.tsx'],
+      },
+    },
   },
   rules: {
     'sort-keys': ['error', 'asc', { caseSensitive: true, minKeys: 2 }],
@@ -39,7 +47,15 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'unknown',
+          'parent',
+          'sibling',
+          'index',
+        ],
         'newlines-between': 'always',
       },
     ],

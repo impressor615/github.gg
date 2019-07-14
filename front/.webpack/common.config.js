@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -39,6 +40,7 @@ module.exports = {
   resolve: {
     alias: {
       'react-dom': '@hot-loader/react-dom',
+      styles: path.resolve(__dirname, '../src/styles'),
     },
     extensions: ['.ts', '.tsx', '.json', '.js'],
   },
@@ -55,5 +57,6 @@ module.exports = {
       filename: isDev ? '[name].css' : '[name].[hash].optimize.css',
       chunkFilename: isDev ? '[id].css' : '[id].[hash].optimize.css',
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 };
