@@ -9,6 +9,11 @@ type BreakpointKeys = keyof typeof breakpoints;
 
 const colors = {};
 const fonts = {};
+const fontWeights = {
+  bold: 700,
+  light: 300,
+  regular: 400,
+};
 const mq = {
   between: (min: BreakpointKeys, max: BreakpointKeys) => (
     ...args: [TemplateStringsArray, ...any[]]
@@ -38,6 +43,7 @@ const mq = {
 const theme = {
   breakpoints,
   colors,
+  fontWeights,
   fonts,
   mq,
 };
