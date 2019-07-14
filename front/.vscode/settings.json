@@ -1,6 +1,6 @@
 {
   "eslint.options": {
-    "configFile": "./front/.eslint/.eslintrc.dev.js"
+    "configFile": "./.eslint/.eslintrc.dev.js"
   },
   "eslint.validate": [
     "javascript",
@@ -8,5 +8,5 @@
     { "language": "typescript", "autoFix": true },
     { "language": "typescriptreact", "autoFix": true }
   ],
-  "typescript.tsdk": "/front/node_modules/typescript/lib"
+  "typescript.tsdk": "/node_modules/typescript/lib"
 }
