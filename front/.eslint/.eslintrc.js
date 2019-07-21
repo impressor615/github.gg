@@ -33,12 +33,7 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
-      'babel-module': {
-        alias: {
-          styles: '../src/styles',
-        },
-        extensions: ['.ts', '.tsx'],
-      },
+      typescript: {},
     },
   },
   rules: {

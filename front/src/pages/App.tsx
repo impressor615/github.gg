@@ -1,6 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from 'styles/global';
@@ -8,6 +8,7 @@ import theme from 'styles/theme';
 
 import Index from './Index';
 import User from './User';
+import Error404 from './errors/404';
 
 const App: React.FC = () => {
   return (
@@ -16,7 +17,9 @@ const App: React.FC = () => {
         <GlobalStyle />
         <Switch>
           <Route exact path="/" component={Index} />
-          <Route path="/user/:username" component={User} />
+          <Route path="/users/:username" component={User} />
+          <Route path="/errors/404" component={Error404} />
+          <Redirect to="/" />
         </Switch>
       </>
     </ThemeProvider>

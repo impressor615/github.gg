@@ -8,17 +8,7 @@ const styledComponentPlugins = {
   dev: { ssr: false, displayName: true, pure: false },
   prod: { ssr: false, displayName: true, pure: true, minify: true },
 };
-const plugins = [
-  'react-hot-loader/babel',
-  [
-    'module-resolver',
-    {
-      alias: {
-        styles: './src/styles',
-      },
-    },
-  ],
-];
+const plugins = ['lodash', 'react-hot-loader/babel'];
 
 module.exports = {
   env: {

@@ -17,7 +17,7 @@ const Index: FC<RouteComponentProps> = ({ history }) => {
       const trimmed = username.trim();
 
       if (trimmed.length > 0) {
-        history.push(`/user/${username}`);
+        history.push(`/users/${username}`);
       }
     },
     [history, username]

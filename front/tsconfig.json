@@ -11,6 +11,8 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
+      "apis/*": ["apis/*"],
+      "schemas/*": ["schemas/*"],
       "styles/*": ["styles/*"]
     },
     "rootDir": "src"
