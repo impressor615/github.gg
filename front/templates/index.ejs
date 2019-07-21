@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Meta: https://github.com/joshbuchea/HEAD#meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="x-dns-prefetch-control" content="off" />
+    <meta http-equiv="Window-Target" content="_value" />
+
+    <meta name="theme-color" content="<%= htmlWebpackPlugin.options.theme %>" />
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta
+      name="subject"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta name="rating" content="General" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- TODO: Site verification here -->
+    <!-- <meta name="google-site-verification" content="TODO" -->
+
+    <!-- Social -->
+    <meta name="og:url" content="<%= htmlWebpackPlugin.options.url %>" />
+    <meta name="og:type" content="website" />
+    <meta name="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
+    <!-- <meta name="og:image" content="TODO" /> -->
+    <!-- <meta name="og:image:alt" content="TODO" /> -->
+    <meta
+      name="og:description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta
+      name="og:site_name"
+      content="<%= htmlWebpackPlugin.options.title %>"
+    />
+    <!-- <meta name="og:locale" content="TODO" /> -->
+
+    <!-- Apple -->
+    <meta
+      name="apple-mobile-web-app-title"
+      content="<%= htmlWebpackPlugin.options.title %>"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="<%= htmlWebpackPlugin.options.theme %>"
+    />
+    <!-- Google Android -->
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="manifest" href="/public/manifest.json" />
+
+    <!-- Icons -->
+    <!-- <link rel="icon" sizes="192x192" href="/path/to/icon.png" /> -->
+    <!-- <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" /> -->
+    <!-- <link rel="mask-icon" href="/path/to/icon.svg" color="blue" /> -->
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap&subset=korean"
+      rel="stylesheet"
+    />
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
