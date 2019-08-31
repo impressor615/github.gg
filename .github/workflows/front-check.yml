@@ -3,7 +3,11 @@ name: JS test & check
 on:
   pull_request:
     paths:
-      - 'front/*'
+      - '*.js'
+      - '*.ts'
+      - '*.tsx'
+      - '*.json'
+      - 'yarn.lock'
 
 jobs:
   check:
@@ -21,11 +25,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: yarn install, lint & type-check and test
+    - name: yarn install and test
       run: |
         yarn install
-        yarn run lint --if-present
-        yarn run check --if-present
         yarn run test --if-present
       env:
         CI: true
