@@ -46,7 +46,7 @@ const Index: FC<RouteComponentProps> = ({ history }) => {
       setTierIndex(prev => (prev === TIERS.length - 1 ? 0 : prev + 1));
     }, 2000);
 
-    return () => clearImmediate(interval);
+    return () => clearInterval(interval);
   }, []);
 
   return (
