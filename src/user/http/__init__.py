@@ -1,8 +1,6 @@
 from flask import Blueprint
 from flask import jsonify
-from flask import request
 from flask import views
-from werkzeug import exceptions
 
 from src.user.services import CommitStatService
 from src.user.services import TierService
@@ -12,11 +10,7 @@ blueprint = Blueprint("user", __name__)
 
 
 class TierView(views.MethodView):
-    def get(self):
-        username = request.args.get("username")
-        if not username:
-            raise exceptions.BadRequest
-
+    def get(self, username: str):
         commit_stat_service = CommitStatService()
         user_count = commit_stat_service.fetch(username)
 
@@ -30,4 +24,4 @@ class TierView(views.MethodView):
         })
 
 
-blueprint.add_url_rule('/tier', view_func=TierView.as_view('tier'))
+blueprint.add_url_rule('/<username>/tier', view_func=TierView.as_view('tier'))
