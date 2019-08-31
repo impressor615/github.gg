@@ -9,6 +9,7 @@ import React, {
 import { RouteComponentProps } from 'react-router';
 import styled from 'styled-components';
 import { Box, TextField, Button } from '@material-ui/core';
+import { useTransition, animated } from 'react-spring';
 
 import { TierEnum } from 'schemas/tier';
 
@@ -16,6 +17,11 @@ const TIERS = Object.keys(TierEnum);
 const Index: FC<RouteComponentProps> = ({ history }) => {
   const [username, setUsername] = useState('');
   const [tierIndex, setTierIndex] = useState(0);
+  const transitions = useTransition(tierIndex, null, {
+    enter: { opacity: 1, transform: 'translate3d(0,0px,0)' },
+    from: { opacity: 0, transform: 'translate3d(0,-30px,0)' },
+    leave: { opacity: 0 },
+  });
 
   const handleSubmit = useCallback(
     (e: SyntheticEvent<HTMLFormElement>) => {
@@ -56,7 +62,7 @@ const Index: FC<RouteComponentProps> = ({ history }) => {
       <div>
         <TitleBox
           position="absolute"
-          top={['12%', '25%']}
+          top={['15%', '25%']}
           left="50%"
           width="100%"
           margin="0 auto"
@@ -65,42 +71,50 @@ const Index: FC<RouteComponentProps> = ({ history }) => {
         >
           commit.gg
         </TitleBox>
-        <Box marginBottom={['15px', '50px']} fontSize>
+        <Box marginBottom={['15px', '50px']} position="relative">
           <Box fontSize={['16px', '25px']} marginBottom={['12px', '25px']}>
             wanna know your tier on github?
           </Box>
-          {/* TODO: react-spring으로 animation 주기 */}
-          <Box
-            fontSize={['40px', '45px']}
-            borderBottom="3px solid"
-            display="inline-block"
-            paddingBottom="10px"
-            fontWeight="bold"
-            fontStyle="italic"
-          >
-            {TIERS[tierIndex]}
-          </Box>
-        </Box>
-        <Form method="GET" onSubmit={handleSubmit}>
-          <TextField
-            id="filled-name"
-            label="Github username"
-            value={username}
-            onChange={handleChange}
-            margin="normal"
-            variant="filled"
-          />
-          <Box position="absolute" top="0" right="0" bottom="0">
-            <StyledButton
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
+          {transitions.map(({ item, key, props }) => (
+            <AnimatedBox
+              key={key}
+              position="absolute"
+              bottom={['-80px', '-90px']}
+              left="0px"
+              right="0px"
+              fontSize={['40px', '45px']}
+              display="inline-block"
+              paddingBottom="10px"
+              fontWeight="bold"
+              fontStyle="italic"
+              style={props}
             >
-              submit
-            </StyledButton>
-          </Box>
-        </Form>
+              {TIERS[item]}
+            </AnimatedBox>
+          ))}
+        </Box>
+        <Box marginTop={['80px', '110px']}>
+          <Form method="GET" onSubmit={handleSubmit}>
+            <TextField
+              id="filled-name"
+              label="Github username"
+              value={username}
+              onChange={handleChange}
+              margin="normal"
+              variant="filled"
+            />
+            <Box position="absolute" top="0" right="0" bottom="0">
+              <StyledButton
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+              >
+                submit
+              </StyledButton>
+            </Box>
+          </Form>
+        </Box>
       </div>
     </Container>
   );
@@ -137,5 +151,7 @@ const StyledButton = styled(Button)`
   height: 100%;
   width: 90px;
 `;
+
+const AnimatedBox = animated(Box);
 
 export default Index;
