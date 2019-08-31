@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
     font-display: swap;
   }
+
+  h1 {
+    margin: 0;
+  }
 `;
 
 export default GlobalStyle;
