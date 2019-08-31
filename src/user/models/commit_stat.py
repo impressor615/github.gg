@@ -1,4 +1,4 @@
-class UserCount():
+class CommitStat():
     def __init__(self, count_map):
         self.count_map = count_map
 

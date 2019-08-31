@@ -1,6 +1,6 @@
 from flask import Flask
 
-from src.tier.http import blueprint as tier_blueprint
+from src.user.http import blueprint as user_blueprint
 
 
 def create_app() -> Flask:
@@ -12,7 +12,7 @@ def create_app() -> Flask:
 
 
 def register_blueprint(app: Flask):
-    app.register_blueprint(tier_blueprint, url_prefix="/api/tier")
+    app.register_blueprint(user_blueprint, url_prefix="/api/user")
 
 
 app = create_app()

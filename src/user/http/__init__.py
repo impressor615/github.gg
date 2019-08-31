@@ -4,12 +4,11 @@ from flask import request
 from flask import views
 from werkzeug import exceptions
 
-from src.fetcher.services import CrawlFetchService
+from src.user.services import CommitStatService
+from src.user.services import TierService
 
-from .services import TierCalculateService
 
-
-blueprint = Blueprint("tier", __name__)
+blueprint = Blueprint("user", __name__)
 
 
 class TierView(views.MethodView):
@@ -18,11 +17,11 @@ class TierView(views.MethodView):
         if not username:
             raise exceptions.BadRequest
 
-        fetch_service = CrawlFetchService()
-        user_count = fetch_service.fetch(username)
+        commit_stat_service = CommitStatService()
+        user_count = commit_stat_service.fetch(username)
 
-        calculate_service = TierCalculateService()
-        tier_name = calculate_service.calculate(user_count)
+        tier_service = TierService()
+        tier_name = tier_service.calculate(user_count)
 
         return jsonify({
             "average": user_count.average,
@@ -31,4 +30,4 @@ class TierView(views.MethodView):
         })
 
 
-blueprint.add_url_rule('/', view_func=TierView.as_view('tier'))
+blueprint.add_url_rule('/tier', view_func=TierView.as_view('tier'))

@@ -4,14 +4,14 @@ import typing
 import bs4
 import requests
 
-from .models import UserCount
+from src.user.models import CommitStat
 
 
-class CrawlFetchService():
-    def fetch(self, username: str) -> UserCount:
+class CommitStatService():
+    def fetch(self, username: str) -> CommitStat:
         count_map = self._fetch(username)
 
-        return UserCount(count_map)
+        return CommitStat(count_map)
 
     def _fetch(self, username: str) -> typing.Dict[datetime.date, int]:
         count_map = {}

@@ -2,7 +2,7 @@ import click
 from gevent.pywsgi import WSGIServer
 from werkzeug.serving import run_with_reloader
 
-from src.http.app import app
+from src.app import app
 
 
 @click.group()
