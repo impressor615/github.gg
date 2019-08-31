@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const TsconfigPathsWebpackPlugin = require('tsconfig-paths-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -40,11 +41,11 @@ module.exports = {
   resolve: {
     alias: {
       'react-dom': '@hot-loader/react-dom',
-      apis: path.resolve(__dirname, '../src/apis'),
-      schemas: path.resolve(__dirname, '../src/schemas'),
-      styles: path.resolve(__dirname, '../src/styles'),
     },
     extensions: ['.ts', '.tsx', '.json', '.js'],
+    plugins: [
+      new TsconfigPathsWebpackPlugin({ configFile: './tsconfig.json' }),
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -1,9 +1,9 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
 
-import * as userApis from 'apis/users';
-import { StatusEnum } from 'schemas/common';
-import { TierEnum } from 'schemas/tier';
+import * as userApis from '@apis/users';
+import { StatusEnum } from '@schemas/common';
+import { TierEnum } from '@schemas/tier';
 
 const User: FC<RouteComponentProps<{ username: string }>> = ({
   match: { params },

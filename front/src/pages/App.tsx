@@ -3,8 +3,8 @@ import { hot } from 'react-hot-loader/root';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyle from 'styles/global';
-import theme from 'styles/theme';
+import GlobalStyle from '@styles/global';
+import theme from '@styles/theme';
 
 import Index from './Index';
 import User from './User';
